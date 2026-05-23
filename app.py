@@ -6,7 +6,7 @@ from flask import Flask, render_template, request
 from dotenv import load_dotenv
 import os
 import time
-from google import genai
+import google.generativeai as genai
 
 # Load .env file
 load_dotenv()
