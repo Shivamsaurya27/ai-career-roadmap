@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roadmap for {{ career }} | CareerAI</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="bg-particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <div class="container">
+
+        <header class="header">
+            <div class="logo">
+                <i class="fas fa-rocket"></i>
+                <span>CareerAI</span>
+            </div>
+            <a href="/" class="back-btn">
+                <i class="fas fa-arrow-left"></i>
+                Generate Another
+            </a>
+        </header>
+
+        <section class="result-hero animate-fade-in">
+            <div class="result-badge">
+                <i class="fas fa-check-circle"></i>
+                Roadmap Generated Successfully
+            </div>
+            <h1 class="result-title">
+                Your Roadmap to Become a
+                <span class="gradient-text">{{ career }}</span>
+            </h1>
+            <p class="result-subtitle">
+                Follow this personalized AI-generated path
+                to achieve your dream career!
+            </p>
+        </section>
+
+        <section class="roadmap-sections">
+
+            <!-- CARD 1: Learning Roadmap - Full Width -->
+            <div class="roadmap-card animate-slide-up"
+                 style="animation-delay: 0.1s">
+                <div class="roadmap-card-header">
+                    <div class="card-icon purple">
+                        <i class="fas fa-road"></i>
+                    </div>
+                    <div>
+                        <h3>🗺️ Learning Roadmap</h3>
+                        <p>Your step-by-step learning path</p>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <!--
+                        Instead of pre-wrap text,
+                        we loop through each line
+                        and make a proper list item
+                        This fixes alignment completely!
+                    -->
+                    <ul class="content-list">
+                    {% for line in roadmap_sections.get('roadmap', '').split('\n') %}
+                        {% if line.strip() %}
+                        <li>{{ line.strip().lstrip('-').strip() }}</li>
+                        {% endif %}
+                    {% endfor %}
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Two column grid -->
+            <div class="two-col-grid">
+
+                <!-- CARD 2: Required Skills -->
+                <div class="roadmap-card animate-slide-up"
+                     style="animation-delay: 0.2s">
+                    <div class="roadmap-card-header">
+                        <div class="card-icon blue">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <div>
+                            <h3>💡 Required Skills</h3>
+                            <p>Skills you must master</p>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <ul class="content-list">
+                        {% for line in roadmap_sections.get('skills', '').split('\n') %}
+                            {% if line.strip() %}
+                            <li>{{ line.strip().lstrip('-').strip() }}</li>
+                            {% endif %}
+                        {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- CARD 3: Tools -->
+                <div class="roadmap-card animate-slide-up"
+                     style="animation-delay: 0.3s">
+                    <div class="roadmap-card-header">
+                        <div class="card-icon green">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <div>
+                            <h3>🛠️ Tools to Learn</h3>
+                            <p>Technologies and platforms</p>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <ul class="content-list">
+                        {% for line in roadmap_sections.get('tools', '').split('\n') %}
+                            {% if line.strip() %}
+                            <li>{{ line.strip().lstrip('-').strip() }}</li>
+                            {% endif %}
+                        {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Two column grid -->
+            <div class="two-col-grid">
+
+                <!-- CARD 4: Projects -->
+                <div class="roadmap-card animate-slide-up"
+                     style="animation-delay: 0.4s">
+                    <div class="roadmap-card-header">
+                        <div class="card-icon pink">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <div>
+                            <h3>🚀 Project Ideas</h3>
+                            <p>Build these for your portfolio</p>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <ul class="content-list">
+                        {% for line in roadmap_sections.get('projects', '').split('\n') %}
+                            {% if line.strip() %}
+                            <li>{{ line.strip().lstrip('-').strip() }}</li>
+                            {% endif %}
+                        {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- CARD 5: Timeline -->
+                <div class="roadmap-card animate-slide-up"
+                     style="animation-delay: 0.5s">
+                    <div class="roadmap-card-header">
+                        <div class="card-icon orange">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div>
+                            <h3>⏱️ Learning Timeline</h3>
+                            <p>Realistic time estimates</p>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <ul class="content-list">
+                        {% for line in roadmap_sections.get('timeline', '').split('\n') %}
+                            {% if line.strip() %}
+                            <li>{{ line.strip().lstrip('-').strip() }}</li>
+                            {% endif %}
+                        {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- CARD 6: Salary - Full Width -->
+            <div class="roadmap-card animate-slide-up"
+                 style="animation-delay: 0.6s">
+                <div class="roadmap-card-header">
+                    <div class="card-icon gold">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <div>
+                        <h3>💰 Salary Outlook</h3>
+                        <p>Expected earnings at each level</p>
+                    </div>
+                    <button class="copy-btn" onclick="copyAll()">
+                        <i class="fas fa-copy"></i>
+                        Copy All
+                    </button>
+                </div>
+                <div class="card-body">
+                    <div class="salary-grid">
+                        <div class="salary-card entry">
+                            <span class="salary-level">Entry Level</span>
+                            <span class="salary-icon">🌱</span>
+                            <span class="salary-amount">₹3-6 LPA</span>
+                            <span class="salary-exp">0-2 years</span>
+                        </div>
+                        <div class="salary-card mid">
+                            <span class="salary-level">Mid Level</span>
+                            <span class="salary-icon">🚀</span>
+                            <span class="salary-amount">₹8-15 LPA</span>
+                            <span class="salary-exp">2-5 years</span>
+                        </div>
+                        <div class="salary-card senior">
+                            <span class="salary-level">Senior Level</span>
+                            <span class="salary-icon">👑</span>
+                            <span class="salary-amount">₹20-40 LPA</span>
+                            <span class="salary-exp">5+ years</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="action-section animate-fade-in">
+            <a href="/" class="action-btn primary">
+                <i class="fas fa-wand-magic-sparkles"></i>
+                Generate Another Roadmap
+            </a>
+            <button class="action-btn secondary"
+                    onclick="shareOnLinkedIn()">
+                <i class="fab fa-linkedin"></i>
+                Share on LinkedIn
+            </button>
+        </section>
+
+        <footer class="footer">
+            <p>Built with
+                <i class="fas fa-heart" style="color:#e74c3c"></i>
+                using Flask & Gemini AI
+            </p>
+        </footer>
+
+    </div>
+
+    <script>
+        function copyAll() {
+            const career = "{{ career }}";
+            const items = document.querySelectorAll('.content-list li');
+            let fullText = `Career Roadmap for: ${career}\n\n`;
+            items.forEach(item => {
+                fullText += '• ' + item.innerText + '\n';
+            });
+            navigator.clipboard.writeText(fullText).then(function() {
+                const btn = document.querySelector('.copy-btn');
+                btn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                btn.style.borderColor = '#22c55e';
+                btn.style.color = '#4ade80';
+                setTimeout(function() {
+                    btn.innerHTML = '<i class="fas fa-copy"></i> Copy All';
+                    btn.style.borderColor = '';
+                    btn.style.color = '';
+                }, 2000);
+            });
+        }
+
+        function shareOnLinkedIn() {
+            const career = "{{ career }}";
+            const text = `🚀 Just generated my ${career} career roadmap using AI!\n\nBuilt with Python Flask + Gemini AI\n\n#CareerGrowth #AI #Tech`;
+            const url = `https://www.linkedin.com/sharing/share-offsite/?url=https://github.com&summary=${encodeURIComponent(text)}`;
+            window.open(url, '_blank');
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,12 @@
+# render.yaml
+# This file tells Render how to run our app
+
+services:
+  - type: web
+    name: ai-career-roadmap
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    envVars:
+      - key: GEMINI_API_KEY
+        sync: false
